@@ -1,0 +1,42 @@
+{
+    "family": "jenkins-demo-task",
+    "containerDefinitions": [
+        {
+            "name": "jenkins-demo-container",
+            "image": "396576457079.dkr.ecr.us-east-1.amazonaws.com/jenkins-demo:latest",
+            "cpu": 512,
+            "memory": 2048,
+            "portMappings": [
+                {   
+                    "containerPort": 8080,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                },
+                {   
+                    "containerPort": 50000,
+                    "hostPort": 50000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "mountPoints": [
+                {   
+                    "sourceVolume": "jenkins_home",
+                    "containerPath": "/var/jenkins_home",
+                    "readOnly": false
+                }
+            ],
+            "privileged": false,
+            "user": "root",
+            "readonlyRootFilesystem": false
+        }
+    ],
+    "volumes": [
+        {   
+            "name": "jenkins_home",
+            "host": {
+                "sourcePath": "/ecs/volumes/jenkins_home"
+            }
+        }
+    ]
+}

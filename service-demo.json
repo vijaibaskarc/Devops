@@ -1,0 +1,13 @@
+{
+    "cluster": "JenkinsDemoCluster",
+    "serviceName": "jenkins-service",
+    "taskDefinition": "jenkins-demo-task:1",
+    "desiredCount": 1,
+    "clientToken": "random_value_here",
+    "deploymentConfiguration": {
+        "maximumPercent": 200,
+        "minimumHealthyPercent": 50
+    }
+}
+
+
